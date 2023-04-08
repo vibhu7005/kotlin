@@ -6,6 +6,7 @@ public class Array {
         io.sem = 4;
     }
     class IO {
+        private IO() {}
         private int sem = 4;
     }
 }
