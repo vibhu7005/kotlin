@@ -1,3 +1,3 @@
-class Hello {
+fun main() {
 
 }
