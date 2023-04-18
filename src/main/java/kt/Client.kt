@@ -1,3 +1,5 @@
+import kt.enum.Department
+
 fun main() {
     var emp = Employee("sam" , true)
    // emp.isFullTime = false
@@ -5,4 +7,5 @@ fun main() {
     var emp2 = Employee("sam" , true)
    // emp.isFullTime = false
     println("employee name = ${emp.firstName} employee contract = ${emp.isFullTime}" )
+    println(Department.HR.printInfo())
 }
