@@ -2,4 +2,6 @@ rootProject.name = 'java'
 include 'SecondaryModule'
 include 'src:main:AnotherModule'
 findProject(':src:main:AnotherModule')?.name = 'AnotherModule'
+include 'src:main:secModule'
+findProject(':src:main:secModule')?.name = 'secModule'
 

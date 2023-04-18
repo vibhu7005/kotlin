@@ -1,7 +1,7 @@
 package kt.arrays
 
 import java.util.ArrayList
-
+fun printktx() = println("hello kt")
 fun main() {
     val names = arrayOf("z","t","h")
     for (name in names) {
