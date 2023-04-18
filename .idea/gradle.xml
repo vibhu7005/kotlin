@@ -10,6 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/SecondaryModule" />
+            <option value="$PROJECT_DIR$/src" />
+            <option value="$PROJECT_DIR$/src/main" />
+            <option value="$PROJECT_DIR$/src/main/AnotherModule" />
           </set>
         </option>
       </GradleProjectSettings>
