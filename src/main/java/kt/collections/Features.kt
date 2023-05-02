@@ -22,5 +22,9 @@ fun main() {
     println(carsList.find { it.year > 2004 })
 
     println( carsList.groupBy { "Jordiee " + it.name })
+
+    println(carsList.sortedBy { it.year })
+
+    println(carMap.toSortedMap())
 }
 
