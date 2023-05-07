@@ -15,19 +15,22 @@ fun convertToInt(list: List<Number>) {
     }
 }
 
-fun waterGarden(garden : Garden<Flower>) {
+fun <T : Flower>waterGarden(garden : Garden<out T>) {
     println("watering garden")
 }
 
 open class Flower {}
 
-class Rose : Flower()
+private class Rose : Flower()
 
-class Garden<out T : Flower>(private val flower : T) {
+class Garden<T : Flower>(private val flower : T) {
     private fun addFlower(flower : T) {
 
     }
 }
+
+
+
 
 
 
