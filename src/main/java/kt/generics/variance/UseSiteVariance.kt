@@ -2,7 +2,7 @@ package kt.generics.variance
 
 open class Car
 class Ford : Car()
-
+//Java supports useSite variance only whereas kotlin supports both useSite + declaration site variance
 fun main() {
     val fordCarsList = mutableListOf(Ford(), Ford())
     serviceCars(fordCarsList)
