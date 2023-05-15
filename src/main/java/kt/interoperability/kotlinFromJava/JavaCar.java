@@ -1,5 +1,6 @@
 package kt.interoperability.kotlinFromJava;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 
 public class JavaCar {
@@ -14,5 +15,16 @@ public class JavaCar {
         StaticCar.printIt("looper");
         System.out.println(Car.getDoorCount());
         Car.Singelton.res();
+        System.out.println(!Car.Singelton.isAuto);
+//        try {
+        try {
+            car.doIo();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        car.defaultArgs("fdf");
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
     }
 }
