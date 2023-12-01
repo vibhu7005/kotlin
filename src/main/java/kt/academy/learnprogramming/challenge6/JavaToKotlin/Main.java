@@ -10,11 +10,15 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Main obj = new Main();
-        String s = "abc";
+        String s = "aabc";
         StringBuilder sb  = new StringBuilder();
         Map<Character, Integer> map = new HashMap();
         for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i) , 1);
+            if (map.containsKey(s.charAt(i))) {
+                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+            } else {
+                map.put(s.charAt(i), 1);
+            }
             sb.append("x");
         }
         obj.permute(s, 0, sb, map);
@@ -36,12 +40,12 @@ public class Main {
             System.out.println(sb);
             return;
         }
-        for (int i = 0; i < map.size(); i++) {
-            if (map.get(s.charAt(i)) == 1) {
-                sb.setCharAt(index, s.charAt(i));
-                map.put(s.charAt(i), 0);
+        for (Map.Entry m : map.entrySet()) {
+            if (map.get((Character) m.getKey()) >= 1) {
+                sb.setCharAt(index, (Character)m.getKey());
+                map.put((Character) m.getKey(), map.get((Character) m.getKey())-1);
                 permute(s, index + 1, sb, map);
-                map.put(s.charAt(i), 1);
+                map.put((Character) m.getKey(), map.get((Character) m.getKey())+1);
             }
         }
      }
