@@ -9,19 +9,27 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+
         Main obj = new Main();
-        String s = "aabc";
-        StringBuilder sb  = new StringBuilder();
-        Map<Character, Integer> map = new HashMap();
-        for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
-            } else {
-                map.put(s.charAt(i), 1);
-            }
-            sb.append("x");
-        }
-        obj.permute(s, 0, sb, map);
+        Integer x = 4;
+        obj.calc(x);
+        System.out.println(x);
+//        String s = "aabc";
+//        StringBuilder sb  = new StringBuilder();
+//        Map<Character, Integer> map = new HashMap();
+//        for (int i = 0; i < s.length(); i++) {
+//            if (map.containsKey(s.charAt(i))) {
+//                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+//            } else {
+//                map.put(s.charAt(i), 1);
+//            }
+//            sb.append("x");
+//        }
+//        obj.permute(s, 0, sb, map);
+    }
+
+    void calc(Integer x) {
+        x++;
     }
 
     boolean check(int index, StringBuilder sb) {
