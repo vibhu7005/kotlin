@@ -11,12 +11,12 @@ public class Main {
     public static void main(String[] args) {
 
         Main obj = new Main();
-        Integer x = 4;
-        obj.calc(x);
-        System.out.println(x);
-//        String s = "aabc";
-//        StringBuilder sb  = new StringBuilder();
-//        Map<Character, Integer> map = new HashMap();
+//        Integer x = 4;
+//        obj.calc(x);
+//        System.out.println(x);
+        String s = "abc";
+        StringBuilder sb  = new StringBuilder("xxx");
+        Map<Character, Integer> map = new HashMap();
 //        for (int i = 0; i < s.length(); i++) {
 //            if (map.containsKey(s.charAt(i))) {
 //                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
@@ -25,7 +25,8 @@ public class Main {
 //            }
 //            sb.append("x");
 //        }
-//        obj.permute(s, 0, sb, map);
+        boolean visited[] = new boolean[3];
+        obj.subsets(s, 0, sb);
     }
 
     void calc(Integer x) {
@@ -43,20 +44,31 @@ public class Main {
         return true;
     }
 
-     void permute(String s, int index, StringBuilder sb, Map<Character,Integer>map) {
+     void permute(String s, int index, StringBuilder sb, boolean visited[]) {
         if (index == s.length()) {
             System.out.println(sb);
             return;
         }
-        for (Map.Entry m : map.entrySet()) {
-            if (map.get((Character) m.getKey()) >= 1) {
-                sb.setCharAt(index, (Character)m.getKey());
-                map.put((Character) m.getKey(), map.get((Character) m.getKey())-1);
-                permute(s, index + 1, sb, map);
-                map.put((Character) m.getKey(), map.get((Character) m.getKey())+1);
+        for (int i = 0; i < s.length(); i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                sb.setCharAt(index, s.charAt(i));
+                permute(s, index + 1, sb, visited);
+                visited[i] = false;
             }
         }
      }
+
+    void subsets(String s, int index, StringBuilder sb) {
+        if (index == s.length()) {
+            System.out.println(sb);
+            return;
+        }
+        sb.setCharAt(index, '0');
+        subsets(s, index + 1, sb);
+        sb.setCharAt(index, '1');
+        subsets(s, index + 1, sb);
+    }
 
 
      //abc
