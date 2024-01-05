@@ -9,134 +9,56 @@ import java.util.Map;
 
 public class Main {
 
+    static ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+    boolean stop = false;
+    int s = 0;
     public static void main(String[] args) {
-
+        int x = 0;
         Main obj = new Main();
-//        Integer x = 4;
-//        obj.calc(x);
-//        System.out.println(x);
-//        String s = "abc";
-//        StringBuilder sb  = new StringBuilder("xxx");
-//        Map<Character, Integer> map = new HashMap();
-////        for (int i = 0; i < s.length(); i++) {
-////            if (map.containsKey(s.charAt(i))) {
-////                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
-////            } else {
-////                map.put(s.charAt(i), 1);
-////            }
-////            sb.append("x");
-////        }
-//        boolean visited[] = new boolean[3];
-//        obj.subsets(s, 0, sb);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 4 * 2 ; i++) {
-            sb.append('x');
+        int A[] = {2, 3, 6, 7};
+        int B = 7;
+        ArrayList<Integer> list = new ArrayList<>();
+        int arr[] = new int[500];
+        obj.generate(arr, B, A, 0, 0);
+        int ans[][] = new int[res.size()][];
+        for (int i = 0; i < res.size(); i++) {
+            ans[i] = new int[res.get(i).size()];
+            for (int j = 0; j < res.get(i).size(); j++) {
+                ans[i][j] = res.get(i).get(j);
+            }
         }
-        obj.generate(sb, 0, 4 * 2);
-//        String ans[] = new String[res.size()];
-//        ArrayList<String> res = new ArrayList<>();
-//        for (int i = 0; i < ans.length; i++) {
-//            ans[i] = res.get(i);
-//        }
+        System.out.println(x);
     }
 
-    void calc(Integer x) {
-        x++;
-    }
-
-    boolean check(int index, StringBuilder sb) {
-        if (index < 2) return true;
-        if (sb.length() < 2) return true;
-
-        for (int i = 0; i < sb.length() - 1; i++) {
-            if (sb.charAt(i) == 'a' && sb.charAt(i+1) == 'b')
-                return false;
+    int add(int arr[], int ind) {
+        int sum = 0;
+        for (int i = 0; i< ind; i++) {
+            sum += arr[i];
         }
-        return true;
+        return sum;
     }
 
-     void permute(String s, int index, StringBuilder sb, boolean visited[]) {
-        if (index == s.length()) {
-            System.out.println(sb);
+    void generate(int arr[], int target, int[] A, int start, int index) {
+        int sum = s;
+        if (sum >= target) {
+            if (sum == target) {
+                ArrayList<Integer> list = new ArrayList<>();
+                for (int i=0;i<index;i++){
+                    list.add(arr[i]);
+                }
+                res.add(list);
+            }
+            stop = true;
             return;
         }
-        for (int i = 0; i < s.length(); i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                sb.setCharAt(index, s.charAt(i));
-                permute(s, index + 1, sb, visited);
-                visited[i] = false;
-            }
-        }
-     }
 
-    void subsets(String s, int index, StringBuilder sb) {
-        if (index == s.length()) {
-            System.out.println(sb);
-            return;
+        for (int i = start; i < A.length; i++) {
+            arr[index] = A[i];
+            s += A[i];
+            generate(arr, target, A, i, index + 1);
+            s -= A[i];
+            if (stop) break;
         }
-        sb.setCharAt(index, '0');
-        subsets(s, index + 1, sb);
-        sb.setCharAt(index, '1');
-        subsets(s, index + 1, sb);
+        stop = false;
     }
-
-
-
-
-
-        boolean isbalanced(String s) {
-            int x = 0;
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == '(') {
-                    x += 1;
-                } else {
-                    x -= 1;
-                }
-                if (x < 0) {
-                    return false;
-                }
-            }
-            if (x != 0) {
-                return false;
-            }
-            return true;
-        }
-        boolean checkLimit(String s, int A) {
-            int count = 0;
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == '(') {
-                    count += 1;
-                }
-                if (count >= A) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-
-        void generate(StringBuilder sb, int index, int len) {
-            if (index == len) {
-                if (isbalanced(sb.toString())) {
-                    System.out.println(sb.toString());
-                }
-                return;
-            }
-            if (checkLimit(sb.toString(), (len/2))) {
-                sb.setCharAt(index, '(');
-                generate(sb, index + 1, len);
-            } else {
-                sb.setCharAt(index, ')');
-                generate(sb, index + 1, len);
-            }
-        }
-    }
-
-
-
-    //abc
-    //
-
-
 }
