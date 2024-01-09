@@ -1,6 +1,14 @@
 package kt.academy.learnprogramming.challenge2
 
 fun main() {
+    val string : String? = null
+    val response = Response()
+
+    if (response.payload?.res.equals("dds")) {
+        println("hello")
+    }
+
+
     var num1: Float? = -3847.384f
     var num2: Float? = (-3214.384).toFloat()
     val array = ShortArray(5) { i -> (i + 1).toShort() }
@@ -15,6 +23,10 @@ fun main() {
         print(s)
     }
 
-    val nonNullVariable: Int? = null
-    nonNullVariable!!.toDouble()
+//    val nonNullVariable: Int? = null
+//    nonNullVariable!!.toDouble()
 }
+
+data class Response(val payload: Payload? = null)
+
+data class Payload(val res : String)
