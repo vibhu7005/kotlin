@@ -18,9 +18,10 @@ public class Main {
         int A[] = {2, 3, 6, 7};
         int b[] = A.clone();
         obj.doi(b);
-        for (int i = 0; i < A.length; i++) {
-            System.out.println(A[i] + " ");
-        }
+//        for (int i = 0; i < A.length; i++) {
+//            System.out.println(A[i] + " ");
+//        }
+        System.out.println(2*3/6);
 //        int B = 7;
 //        ArrayList<Integer> list = new ArrayList<>();
 //        int arr[] = new int[500];
@@ -32,7 +33,7 @@ public class Main {
 //                ans[i][j] = res.get(i).get(j);
 //            }
 //        }
-        System.out.println(x);
+//        System.out.println(x);
     }
 
     void doi(int m[]) {
