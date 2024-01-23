@@ -13,27 +13,54 @@ public class Main {
     boolean stop = false;
     int s = 0;
     public static void main(String[] args) {
-        int x = 0;
         Main obj = new Main();
-        int A[] = {2, 3, 6, 7};
-        int b[] = A.clone();
-        obj.doi(b);
-//        for (int i = 0; i < A.length; i++) {
-//            System.out.println(A[i] + " ");
-//        }
-        System.out.println(2*3/6);
-//        int B = 7;
-//        ArrayList<Integer> list = new ArrayList<>();
-//        int arr[] = new int[500];
-//        obj.generate(arr, B, A, 0, 0);
-//        int ans[][] = new int[res.size()][];
-//        for (int i = 0; i < res.size(); i++) {
-//            ans[i] = new int[res.get(i).size()];
-//            for (int j = 0; j < res.get(i).size(); j++) {
-//                ans[i][j] = res.get(i).get(j);
-//            }
-//        }
-//        System.out.println(x);
+        int A[] = {7,6,5,4,3};
+        obj.mergeSort(A, 0, A.length-1);
+        for (int i = 0; i < A.length; i++) {
+            System.out.print(A[i] + " ");
+        }
+    }
+
+    void mergeSort(int A[], int start, int end) {
+        if (start == end) {
+            return;
+        }
+        int mid = (start + end) / 2;
+        mergeSort(A, start, mid);
+        mergeSort(A, mid + 1, end);
+        mergeArrays(A, start, mid, end);
+    }
+
+    void mergeArrays(int A[], int start, int mid, int end) {
+        int B[] = new int[end - start + 1];
+        int l1 = start;
+        int r1 = mid;
+        int l2 = mid + 1;
+        int r2 = end;
+        int index = 0;
+        while (l1 <= r1 && l2 <= r2) {
+            if (A[l1] < A[l2]) {
+                B[index++] = A[l1];
+                l1++;
+            } else {
+                B[index++] = A[l2];
+                l2++;
+            }
+        }
+
+        while (l1 <= r1) {
+            B[index++] = A[l1];
+            l1++;
+        }
+
+        while (l2 <= r2) {
+            B[index++] = A[l2];
+            l2++;
+        }
+        int p = start;
+        for (int i = 0; i < B.length; i++) {
+            A[p++] = B[i];
+        }
     }
 
     void doi(int m[]) {
