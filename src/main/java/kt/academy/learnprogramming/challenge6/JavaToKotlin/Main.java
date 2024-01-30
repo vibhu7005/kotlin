@@ -1,11 +1,5 @@
 package kt.academy.learnprogramming.challenge6.JavaToKotlin;
-
-import java.io.*;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
 
