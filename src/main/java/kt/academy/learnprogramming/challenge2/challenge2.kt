@@ -46,18 +46,35 @@ fun main() {
 //        it.value.any { it < 0 }
 //    })
 
-    val str : String = "abc"
-    str?.let{
-        println(it.length)
+//    val str : String = "abc"
+//    str?.let{
+//        println(it.length)
+//
+//    }
+//    str?.apply {
+//        val x = length
+//        val y = trim()
+//        val z = x.toString() + y
+//    }
+//    println(doo("     radar ", {it.uppercase()}, {it.trim()}))
 
-    }
-    str?.apply {
-        val x = length
-        val y = trim()
-        val z = x.toString() + y
-    }
-    println(doo("     radar ", {it.uppercase()}, {it.trim()}))
+
+    val person1 = Person("Alice", 30, Address("lol","lop"))
+    val person2 = person1.copy() // Shallow copy
+    person2.age = 57
+    person2.address.city = "lala"
+    println(person1.address.city)
+//    if (person1 === person2) println(true)
+//    else println(false)
 }
+
+data class Person(var name: String, var age: Int, var address: Address)
+data class Address(var city: String, var country: String)
+
+
+//fun Person.deepCopy() : Person {
+//    return this.copy(name = this.name, age = this.a)
+//}
 
 inline fun doo(s : String, operation1 : (String) -> String, operation2 : (String) -> String) : String {
     return operation2(operation1(s))
