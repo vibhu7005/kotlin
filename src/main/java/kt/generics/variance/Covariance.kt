@@ -15,7 +15,7 @@ fun convertToInt(list: List<Number>) {
     }
 }
 
-fun <T : Flower>waterGarden(garden : Garden<out T>) {
+fun <T  : Flower>waterGarden(garden : Garden<out T>) {
     println("watering garden")
 }
 

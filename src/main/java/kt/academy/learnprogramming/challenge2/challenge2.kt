@@ -59,13 +59,17 @@ fun main() {
 //    println(doo("     radar ", {it.uppercase()}, {it.trim()}))
 
 
-    val person1 = Person("Alice", 30, Address("lol","lop"))
-    val person2 = person1.copy() // Shallow copy
-    person2.age = 57
-    person2.address.city = "lala"
-    println(person1.address.city)
+//    val person1 = Person("Alice", 30, Address("lol","lop"))
+//    val person2 = person1.copy() // Shallow copy
+//    person2.age = 57
+//    person2.address.city = "lala"
+//    println(person1.address.city)
 //    if (person1 === person2) println(true)
 //    else println(false)
+    lateinit var dog : Animal
+    dog = Animal()
+
+
 }
 
 data class Person(var name: String, var age: Int, var address: Address)
@@ -93,3 +97,20 @@ fun lao(fx : (Int)->Int) : Int {
 data class Response(val payload: Payload? = null)
 
 data class Payload(val res : String)
+
+
+open class Animal() {
+   open fun bark() {
+        println("moo")
+    }
+}
+
+class Dog : Animal() {
+    override fun bark() {
+        println("bark")
+    }
+
+    fun eat() {
+        println("eat")
+    }
+}
