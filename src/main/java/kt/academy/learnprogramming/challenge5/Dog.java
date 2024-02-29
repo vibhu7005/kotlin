@@ -1,6 +1,7 @@
 package kt.academy.learnprogramming.challenge5;
 
 public class Dog extends Animal implements Test3434 {
+    protected int f = 3;
 
     @Override
     public void run() {
