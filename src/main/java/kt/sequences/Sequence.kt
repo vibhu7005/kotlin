@@ -1,12 +1,12 @@
 package kt.sequences
 
-import kt.collections.Car
+import kt.collections.Caran
 import kotlin.system.measureTimeMillis
 
 
 fun main() {
     val carMap = mapOf(
-        1 to Car("Maserati", 1999), 2 to Car("Porche", 2005), 3 to Car("Lexus", 2020)
+        1 to Caran("Maserati", 1999), 2 to Caran("Porche", 2005), 3 to Caran("Lexus", 2020)
     )
 
 //    println(carMap.filter { it.value.year > 2000}

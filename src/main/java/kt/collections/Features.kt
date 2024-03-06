@@ -2,8 +2,8 @@ package kt.collections
 
 fun main() {
     val carMap = mapOf(
-        1 to Car("Maserati", 1999), 2 to Car("Porche", 2005),
-        3 to Car("Lexus", 2020)
+        1 to Caran("Maserati", 1999), 2 to Caran("Porche", 2005),
+        3 to Caran("Lexus", 2020)
     )
     val filteredCarMap = carMap.filter { it.value.year > 2005 }
     val carProductionYearList = carMap.map { it.value.year }
