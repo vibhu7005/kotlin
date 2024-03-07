@@ -9,32 +9,28 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        String arr[] = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        HashMap<String, ArrayList<Integer>> map = new HashMap();
-        String arr2[] = new String[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            char[] ar = arr[i].toCharArray();
-            Arrays.sort(ar);
-            String sorted = String.valueOf(ar);
-            if (!map.containsKey(sorted)) {
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(i);
-                map.put(sorted, list);
-            } else {
-                ArrayList<Integer> list = map.get(sorted);
-                list.add(i);
-                map.put(sorted, list);
-            }
-        }
+        List<Animala> animalas = new ArrayList<>();
+        animalas.add(new Animala());
+        animalas.add(new Doga());
+        List<Doga> dogList = new ArrayList<>();
+//        doSomething(dogList);
+    }
 
-        for (Map.Entry<String, ArrayList<Integer>> entry : map.entrySet()) {
-            ArrayList<Integer> list = entry.getValue();
-            for (int i = 0; i < list.size(); i++) {
-                System.out.print(arr[list.get(i)] + " ");
-            }
-            System.out.println();
-        }
 
+    static void doSomething(List<Animala> animalas) {
+        animalas.add(new Animala());
+    }
+}
+
+class Animala {
+    void foo(){
+        System.out.println("lol");
+    }
+}
+
+class Doga extends Animala {
+    void foo() {
+        System.out.println("l2l");
     }
 }
 
