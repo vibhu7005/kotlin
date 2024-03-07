@@ -9,11 +9,6 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        List<Animala> animalas = new ArrayList<>();
-        animalas.add(new Animala());
-        animalas.add(new Doga());
-        List<Doga> dogList = new ArrayList<>();
-//        doSomething(dogList);
     }
 
 
@@ -23,18 +18,26 @@ public class Main {
 }
 
 class Animala {
-    void foo(){
+    void foo() {
         System.out.println("lol");
     }
 }
 
-class Doga extends Animala {
+class Doga extends Animala implements Cloneable {
+    int s;
+
+    Doga() {
+    }
+
     void foo() {
-        System.out.println("l2l");
+        System.out.println(s);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
-
-
 
 
 //class
