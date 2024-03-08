@@ -3,7 +3,7 @@ package kt.scalerdesigns
 import java.util.concurrent.locks.Lock
 import kotlin.properties.Delegates
 
-class Dart private constructor() {
+class Dart private constructor() : java.io.Serializable {
     companion object {
         @Volatile
         private lateinit var dart: Dart
