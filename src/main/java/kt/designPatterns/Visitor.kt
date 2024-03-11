@@ -1,39 +1,39 @@
 package kt.designPatterns
 
-interface IMotor {
-    fun accept(visitor: IVisitor)
+interface Visitor {
+    fun visit(room: DeluxeRoom)
+    fun visit(room: DoubleRoom)
 }
 
-interface IVisitor {
-    fun visit(motor: StandardMotor)
-
-    fun visit(motor: PowerMotor)
+interface Room {
+    fun accept(visitor: Visitor)
 }
 
-class CleanMotor : IVisitor {
-    override fun visit(motor: StandardMotor) {
-        println("cleaning standard motor")
-    }
-
-    override fun visit(motor: PowerMotor) {
-        println("cleaning power motor")
-    }
-}
-
-class StandardMotor : IMotor {
-    override fun accept(visitor: IVisitor) {
+class DeluxeRoom : Room {
+    override fun accept(visitor: Visitor) {
         visitor.visit(this)
     }
 }
 
-class PowerMotor : IMotor {
-    override fun accept(visitor: IVisitor) {
+class DoubleRoom : Room {
+    override fun accept(visitor: Visitor) {
         visitor.visit(this)
     }
+}
+
+class CleanRoom : Visitor {
+    override fun visit(room: DeluxeRoom) {
+        println("cleaning deluxe room")
+    }
+
+    override fun visit(room: DoubleRoom) {
+        println("cleaning double room")
+    }
+
 }
 
 fun main() {
-    val motor = PowerMotor()
-    motor.accept(CleanMotor())
+    val deluxeRoom = DeluxeRoom()
+    deluxeRoom.accept(CleanRoom())
 }
 

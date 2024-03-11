@@ -1,58 +1,21 @@
 package kt.designPatterns
 
-import kt.generics.variance.convertToInt
-import java.util.*
-
-interface ICommand {
+interface Command {
     fun execute()
-    fun undo()
 }
 
-class TurnOnCommand() : ICommand {
+class TurnOnAcCommand : Command {
     override fun execute() {
-        println("turn on ac")
-    }
-
-    override fun undo() {
-        println("turn off ac")
+        println("turn on Ac")
     }
 }
 
-class TurnOffCommand() : ICommand {
-    override fun execute() {
-        println("turn off ac")
-    }
-
-    override fun undo() {
-        println("turn on ac")
-    }
-}
-
-class CommandController {
-    var command: ICommand? = null
-    val stack = Stack<ICommand>()
+class CommandController(private val command: Command){
     fun executeCommand() {
-        command?.let {
-            it.execute()
-            stack.add(it)
-        }
+        command.execute()
     }
-
-    fun undoCommand() {
-        val command = stack.pop()
-        command.undo()
-    }
-}
-
-interface Afg {
-    val x: Int
-        get() = 10
 }
 
 fun main() {
-    var controller = CommandController()
-    controller.command = TurnOnCommand()
-    controller.undoCommand()
-    controller.executeCommand()
-    controller.undoCommand()
+    CommandController(TurnOnAcCommand()).executeCommand()
 }

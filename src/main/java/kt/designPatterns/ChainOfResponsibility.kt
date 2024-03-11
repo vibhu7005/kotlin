@@ -7,37 +7,37 @@ open abstract class LogProcessor(private val nextLogProcessor: LogProcessor?) {
         val info = 3
     }
 
-    open fun log(type: Int, data: String) {
-        nextLogProcessor?.log(type, data) ?: throw Exception("Invalid log")
+    open fun log(type : Int, log : String) {
+       nextLogProcessor?.log(type, log) ?: throw java.lang.Exception()
     }
 }
 
 class DebugLogProcessor(nextLogProcessor: LogProcessor?) : LogProcessor(nextLogProcessor) {
-    override fun log(type: Int, data: String) {
+    override fun log(type : Int, log : String) {
         if (type == debug) {
-            println("debug log : $data")
+            super.log(type, log)
         } else {
-            super.log(type, data)
+            super.log(type, log)
         }
     }
 }
 
 class ErrorLogProcessor(nextLogProcessor: LogProcessor?) : LogProcessor(nextLogProcessor) {
-    override fun log(type: Int, data: String) {
-        if (type == error) {
-            println("error log : $data")
+    override fun log(type : Int, log : String) {
+        if (type == debug) {
+            super.log(type, log)
         } else {
-            super.log(type, data)
+            super.log(type, log)
         }
     }
 }
 
 class InfoLogProcessor(nextLogProcessor: LogProcessor?) : LogProcessor(nextLogProcessor) {
-    override fun log(type: Int, data: String) {
-        if (type == info) {
-            println("info log : $data")
+    override fun log(type : Int, log : String) {
+        if (type == debug) {
+            super.log(type, log)
         } else {
-            super.log(type, data)
+            super.log(type, log)
         }
     }
 }
