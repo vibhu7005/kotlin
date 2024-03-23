@@ -13,12 +13,15 @@ class Consumer <in T> {
 }
 
 fun main() {
-    var producer = Producer<Any>(2)
-    val producer2 = Producer<String>("rat")
-    producer = producer2
+   val listOfData = sequence<Int> {
+       for (i in 1..10) {
+           Thread.sleep(1000)
+           yield(i)
+       }
+   }
+    rest {it + 4}
+}
 
-    var consumer = Consumer<Int>()
-    var consumer2 = Consumer<Any>()
-    consumer = consumer2
-
+fun rest(lam : (Int) -> Int) {
+    lam(3)
 }
