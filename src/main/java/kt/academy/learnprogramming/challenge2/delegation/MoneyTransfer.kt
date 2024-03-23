@@ -1,7 +1,7 @@
 package kt.academy.learnprogramming.challenge2.delegation
 val name : String = " dfd"
 private val s = "dfdf"
-class MoneyTransfer(aeps : Aeps, upi : UpiInterface) : Aeps by AepsProvider(),UpiInterface by UpiProvider() {
+class MoneyTransfer(aeps : Aeps, upi : UpiInterface) : Aeps by AepsProvider(), UpiInterface by UpiProvider() {
     protected val d : Int = 3
     var x : String = "kok"
     val list : List<String> by lazy {
@@ -27,6 +27,7 @@ fun main() {
         sb = it
     }
     var moneyTransfer = MoneyTransfer(AepsProvider(), UpiProvider())
+    moneyTransfer.aeps()
     println(moneyTransfer printName "rohan")
     println(moneyTransfer.x)
     val mv = listOf(1,2,3)

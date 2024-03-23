@@ -76,3 +76,5 @@ class Consumer <in E> {
     fun consume(mat : E) {
     }
 }
+
+data class Onbh(val message: String) : Resulti()
