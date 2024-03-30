@@ -10,7 +10,7 @@ fun main() {
 }
 
 object Singleton {
-    fun getMessage() = "Object class is a sngleton in kotlin"
+    fun getMessage() = "Object class is a singleton in kotlin"
     private var count = 0
     init {
         count++

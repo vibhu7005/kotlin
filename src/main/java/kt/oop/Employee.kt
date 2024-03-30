@@ -1,3 +1,8 @@
 package kt.oop
 
-class Employee constructor(val firstname : String, var isFullTime :Boolean = true)
+data class Employee (val firstname : String, private var isFullTime :Boolean = true, val yearOfJoining: Int) {
+    fun isEmpFullTime() : Boolean {
+        return isFullTime
+    }
+
+}

@@ -1,16 +1,22 @@
 package kt.arrays
 
-import java.util.ArrayList
-
+fun printktx() = println("hello kt")
 fun main() {
-    val names = arrayOf("z","t","h")
-    for (name in names) {
-        println(name)
+    val person = Person(2,3)
+    with(person) {
+        name = 5
+        age = 7
     }
-    val numbers = intArrayOf(2,4,5)
-    val nums = arrayOf(2,5,6)
-  //  val names =
-    StudentNames().printNames(nums.toIntArray())
-    val array = numbers.toTypedArray()
 
+    println(person)
+
+    val s = "shyam"
+    s?.apply {
+
+    }
 }
+
+data class Person (
+    var name : Int,
+    var age : Int
+)
