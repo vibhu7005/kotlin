@@ -12,19 +12,30 @@ class Consumer <in T> {
     }
 }
 
+class Bird(private val featherCount : Int) {
+    operator fun plus (other : Bird) = this.featherCount + other.featherCount
+
+    operator fun invoke() {
+        println("hello, this bird has $featherCount feathers")
+    }
+}
+
 fun main() {
 
-   val listOfData = sequence<Int> {
-       for (i in 1..10) {
-           Thread.sleep(1000)
-           yield(i)
-       }
-   }
-    rest {it + 4}
+//   val listOfData = sequence<Int> {
+//       for (i in 1..10) {
+//           Thread.sleep(1000)
+//           yield(i)
+//       }
+//   }
+//    rest {it + 4}
+//
+//    val map :MutableMap<String,String> = mutableMapOf("ee" to "op", "rr" to "et")
+//    map["ee"] = "op"
+//    val k = {a:Int, b: Int -> a+b}
+    println(Bird(4) + Bird(5))
+    Bird(4).invoke()
 
-    val map :MutableMap<String,String> = mutableMapOf("ee" to "op", "rr" to "et")
-    map["ee"] = "op"
-    val k = {a:Int, b: Int -> a+b}
 
 }
 
