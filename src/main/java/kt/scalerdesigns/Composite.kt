@@ -1,10 +1,14 @@
 package kt.scalerdesigns
 
 interface FileSystem {
+
+    fun getTotalFiles() : Int
     fun printFiles()
 }
 
 class File : FileSystem {
+    override fun getTotalFiles() = 1
+
     override fun printFiles() {
         println("file printed")
     }
@@ -12,10 +16,18 @@ class File : FileSystem {
 }
 
 class Directory : FileSystem {
-    val listOfFiles : MutableList<FileSystem> = mutableListOf()
+    val listOfFiles: MutableList<FileSystem> = mutableListOf()
 
-    fun addFiles(file : FileSystem) {
+    fun addFiles(file: FileSystem) {
         listOfFiles.add(file)
+    }
+
+    override fun getTotalFiles(): Int {
+        var noOfFiles = 0;
+        for (file in listOfFiles) {
+            noOfFiles += file.getTotalFiles()
+        }
+        return noOfFiles
     }
 
     override fun printFiles() {
@@ -32,5 +44,5 @@ fun main() {
     directory.addFiles(File())
     parentDirectory.addFiles(directory)
     parentDirectory.addFiles(File())
-    parentDirectory.printFiles()
+    println(parentDirectory.getTotalFiles())
 }

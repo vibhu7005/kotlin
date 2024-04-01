@@ -57,28 +57,28 @@ class ChocolateScoob(private val iceCream: IceCream) : IceCream {
 }
 
 fun main() {
-//    val iceCream = ChocolateScoob(ChocolateCone(VanillaCone()))
-//    val directory = IceCreamDirectory()
-//    directory.addIceCream("wow", iceCream)
-//    println(iceCream.getPrice())
-    var x  = AtomicInteger(0)
-    x.incrementAndGet()
-    x.incrementAndGet()
-
-
-    Thread {
-        for (i in 1..10000) {
-            x.incrementAndGet()
-        }
-    }.start()
-
-    Thread {
-        for (i in 1..10000) {
-             x.incrementAndGet()
-        }
-    }.start()
-
-    Thread.sleep(10000)
-    println(x)
+    val iceCream = ChocolateScoob(ChocolateCone(VanillaCone()))
+    val directory = IceCreamDirectory()
+    directory.addIceCream("wow", iceCream)
+    println(iceCream.getPrice())
+//    var x  = AtomicInteger(0)
+//    x.incrementAndGet()
+//    x.incrementAndGet()
+//
+//
+//    Thread {
+//        for (i in 1..10000) {
+//            x.incrementAndGet()
+//        }
+//    }.start()
+//
+//    Thread {
+//        for (i in 1..10000) {
+//             x.incrementAndGet()
+//        }
+//    }.start()
+//
+//    Thread.sleep(10000)
+//    println(x)
 }
 

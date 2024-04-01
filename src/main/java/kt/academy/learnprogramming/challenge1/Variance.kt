@@ -39,6 +39,27 @@ fun main() {
 
 }
 
+
+class SD : Asd, Asa {
+    fun rttoo() {
+        doSome()
+    }
+
+    override fun doSome() {
+        TODO("Not yet implemented")
+    }
+
+
+}
+
+interface Asd {
+    fun doSome() = println("asd")
+}
+
+interface Asa {
+    fun doSome() = println("asa")
+}
+
 tailrec fun mom(jk : Int) : Int {
     if (jk<=1)return 1
     return mom(jk-1)

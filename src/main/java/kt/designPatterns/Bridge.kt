@@ -1,16 +1,16 @@
 package kt.designPatterns
 
-abstract class Vehicle {
-    abstract fun getHorsePower()
+interface  Vehicle {
+     fun getHorsePower()
 }
 
-class Car : Vehicle() {
+class Car : Vehicle {
     override fun getHorsePower() {
         println(100)
     }
 }
 
-class Truck : Vehicle() {
+class Truck : Vehicle {
     override fun getHorsePower() {
         println(200)
     }
