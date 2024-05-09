@@ -20,7 +20,9 @@ fun getSortedPassengerList(passengerList: List<CopassengerModel>, direction: Str
     return passengerList.sortedBy {
             it.pickupTime
     }
+    return passengerList
 }
+
 
 class Car : Vehicle {
     override fun getHorsePower() {
