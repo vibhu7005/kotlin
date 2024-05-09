@@ -11,9 +11,10 @@ fun main() {
     val z = CopassengerModel(1712896440000L, "c")
     val a = CopassengerModel(1712896440000L, "d")
     val list = listOf<CopassengerModel>(x, y, z , a)
-    val sortedList = getSortedPassengerList(list, "Up")
-    println(list)
-    println(sortedList)
+//    val sortedList = getSortedPassengerList(list, "Up")
+//    println(list)
+//    println(sortedList)
+     println( bastard {risk(45)})
 }
 
 fun getSortedPassengerList(passengerList: List<CopassengerModel>, direction: String?): List<CopassengerModel> {
@@ -34,6 +35,12 @@ class Truck : Vehicle {
     override fun getHorsePower() {
         println(200)
     }
+}
+
+val risk  = {x : Int -> x + 4}
+
+fun bastard(x : (Int) -> Int)  {
+     println(x.invoke(60))
 }
 
 abstract class Engine(vehicle: Vehicle) {
