@@ -1,27 +1,17 @@
 package kt.designPatterns
 
+
 interface  Vehicle {
      fun getHorsePower()
 }
 
 
 fun main() {
-    val x = CopassengerModel(1712899860000L, "a")
-    val y = CopassengerModel(1712899980000L, "b")
-    val z = CopassengerModel(1712896440000L, "c")
-    val a = CopassengerModel(1712896440000L, "d")
-    val list = listOf<CopassengerModel>(x, y, z , a)
-//    val sortedList = getSortedPassengerList(list, "Up")
-//    println(list)
-//    println(sortedList)
-     println( bastard {risk(45)})
-}
+    val x : String = "aman"
+    var a = 5
+    var b = a++
+    println(a + b)
 
-fun getSortedPassengerList(passengerList: List<CopassengerModel>, direction: String?): List<CopassengerModel> {
-    return passengerList.sortedBy {
-            it.pickupTime
-    }
-    return passengerList
 }
 
 
