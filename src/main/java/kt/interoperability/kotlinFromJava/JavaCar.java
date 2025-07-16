@@ -5,11 +5,11 @@ import java.sql.SQLOutput;
 
 public class JavaCar {
     public static void main(String[] args) {
-
-        Integer a = Integer.valueOf(1008);
-        Integer i = Integer.valueOf(1008);
-        if (a == i) System.out.println(true);
-        else System.out.println("false");
+        String a = "hulk";
+        String b = "hulkman";
+        String s = a + "man";
+        String v = new String("hulkman");
+        System.out.println(s == b);
     }
 
     void foo(Integer i ) {
