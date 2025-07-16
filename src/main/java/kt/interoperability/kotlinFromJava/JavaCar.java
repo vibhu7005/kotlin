@@ -5,15 +5,11 @@ import java.sql.SQLOutput;
 
 public class JavaCar {
     public static void main(String[] args) {
-        char ch = 'a';
-        double a = ch + 2;
 
-        ch = (char) a;
-        System.out.println(ch);
-        Integer i = 15;
-        JavaCar car = new JavaCar();
-        car.foo(i);
-        System.out.println("value of i is" + i);
+        Integer a = Integer.valueOf(1008);
+        Integer i = Integer.valueOf(1008);
+        if (a == i) System.out.println(true);
+        else System.out.println("false");
     }
 
     void foo(Integer i ) {
