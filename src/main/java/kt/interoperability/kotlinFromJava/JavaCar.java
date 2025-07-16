@@ -10,6 +10,8 @@ public class JavaCar {
 
         ch = (char) a;
         System.out.println(ch);
+        boolean b = true;
+        int f = b;
 
     }
 }
