@@ -10,8 +10,15 @@ public class JavaCar {
 
         ch = (char) a;
         System.out.println(ch);
-        boolean b = true;
-        int f = b;
-
+        Integer i = 15;
+        JavaCar car = new JavaCar();
+        car.foo(i);
+        System.out.println("value of i is" + i);
     }
+
+    void foo(Integer i ) {
+        i = i + 9;
+        System.out.println("foo changed value to" + i);
+    }
+
 }
