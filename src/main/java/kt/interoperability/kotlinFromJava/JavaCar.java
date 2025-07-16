@@ -5,9 +5,11 @@ import java.sql.SQLOutput;
 
 public class JavaCar {
     public static void main(String[] args) {
-       String a = "gyanendra";
-       String b = new String("gyanendra");
-       String c = b;
-        System.out.println(b == c);
+        char ch = 'a';
+        double a = ch + 2;
+
+        ch = (char) a;
+        System.out.println(ch);
+
     }
 }
