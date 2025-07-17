@@ -42,6 +42,11 @@ public class JavaCar {
 
     }
 
+    private static int p = 0;
+    int getDam() {
+        return p;
+    }
+
     void foo(Integer i ) {
         i = i + 9;
         System.out.println("foo changed value to" + i);
