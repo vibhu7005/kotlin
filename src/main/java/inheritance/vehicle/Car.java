@@ -1,10 +1,19 @@
 package inheritance.vehicle;
 
+import kt.academy.learnprogramming.challenge2.oop.C;
 
 
 public class Car extends Vehicle {
-    String engine;
+    public String engine;
+
+    public static void fooo() {
+
+    }
 
     public static void main(String[] args) {
     }
+
+    public static void main()
+
+
 }
