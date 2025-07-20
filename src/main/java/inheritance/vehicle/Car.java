@@ -1,21 +1,20 @@
 package inheritance.vehicle;
 
-import kt.academy.learnprogramming.challenge2.oop.C;
 
 
 public class Car extends Vehicle {
     public String engine;
 
-    public static void fooo(StringBuffer s) {
-        s.append("fdfd");
+    public static void fooo(Integer i) {
+        System.out.println(i);
     }
 
     public static void main(String[] args) {
-        int x = 4;
         StringBuffer s = new StringBuffer("hulk");
-        fooo(s);
-        System.out.println(s);
-
+        Integer i =12;
+        fooo(i);
+        i = 13;
+        System.out.println(i);
     }
 
 
