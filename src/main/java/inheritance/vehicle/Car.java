@@ -36,6 +36,4 @@ public class Car extends Vehicle {
 
 }
 
-class Person {}
 
-class Student extends Person{}
