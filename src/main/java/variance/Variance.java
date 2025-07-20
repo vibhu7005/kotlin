@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Variance {
+    //as list are by default mutable in jaba thats why it is by default invariant
     public static void main(String[] args) {
         Truck<Goods> truck = new Truck<Goods>();
         Cement cement = new Cement();
