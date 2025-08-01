@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static javax.print.attribute.standard.MediaSizeName.A;
+
 public class FanInOut {
     private int i;
 
@@ -32,8 +34,11 @@ public class FanInOut {
         }
 
         void foo() {
-            for (int j = 1; j <= 50; j++) {
-                list.add(j);
+
+            synchronized (this) {
+                for (int j = 1; j <= 50; j++) {
+                    list.add(j);
+                }
             }
 
             while (i < 10) {
