@@ -20,22 +20,28 @@ public class FanInOut {
         threadList.forEach(thread -> {
             try {
                 thread.start();
-//                thread.join();
             }
             catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
 
+        for (Thread thread : threadList) {
+            thread.join();
+        }
     }
 }
 
 class Cxo {
     int i = 0;
-    synchronized void exec() {
+    void exec() {
         while (i < 40) {
-            i++;
-            System.out.println(i);
+            readAndWrite();
         }
+    }
+
+    synchronized void readAndWrite() {
+        System.out.println(i);
+        i++;
     }
 }
