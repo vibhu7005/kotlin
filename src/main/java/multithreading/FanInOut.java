@@ -27,9 +27,10 @@ public class FanInOut {
         int i = 0;
 
         synchronized void getAnd() {
-            if (i >39) return;
+//            if (i >39) return;
             System.out.println(list.get(i));
             i++;
+            notify();
         }
 
         void foo() {
