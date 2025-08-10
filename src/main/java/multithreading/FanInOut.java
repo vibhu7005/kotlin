@@ -1,47 +1,77 @@
 package multithreading;
 
-
-import kt.A;
-
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static javax.print.attribute.standard.MediaSizeName.A;
 
 public class FanInOut {
+    private int i;
 
-    public static void main(String[] args) throws InterruptedException {
-        Cxo cxo = new Cxo();
-        cxo.i = 0;
-
-        ArrayList<Thread> threadList = new ArrayList<>();
-
-        for (int j = 0; j < 4; j++) {
-            threadList.add(new Thread(cxo::exec));
-        }
-
-        threadList.forEach(thread -> {
-            try {
-                thread.start();
-            }
-            catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        for (Thread thread : threadList) {
-            thread.join();
-        }
-    }
-}
-
-class Cxo {
-    int i = 0;
-    void exec() {
-        while (i < 40) {
-            readAndWrite();
-        }
+    FanInOut(int i) {
+        this.i = i;
     }
 
-    synchronized void readAndWrite() {
-        System.out.println(i);
-        i++;
+    public static void main(String[] args) {
+
+        int i = 0;
+        Exec exec = new Exec();
+        exec.foo();
+    }
+
+
+    static class Exec {
+        List<Integer> list = new ArrayList<>();
+
+        int i = 0;
+
+        synchronized void getAnd() {
+            if (i >39) return;
+            System.out.println(list.get(i));
+            i++;
+        }
+
+        void foo() {
+
+            synchronized (this) {
+                for (int j = 1; j <= 50; j++) {
+                    list.add(j);
+                }
+            }
+
+            while (i < 10) {
+                System.out.println(list.get(i));
+                i++;
+            }
+
+            ArrayList<Thread> threads = new ArrayList<>();
+
+            for (int j = 0; j < 3; j++) {
+                threads.add(new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (i < 40) {
+                            getAnd();
+                        }
+                    }
+                }));
+            }
+
+            threads.forEach(Thread::start);
+            threads.forEach(thread -> {
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+//            while (i < 50) {
+//                System.out.println(list.get(i));
+//                i++;
+//            }
+
+        }
     }
 }
