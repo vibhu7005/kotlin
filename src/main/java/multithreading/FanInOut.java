@@ -1,71 +1,41 @@
 package multithreading;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import static javax.print.attribute.standard.MediaSizeName.A;
+import kt.A;
+
+import java.util.ArrayList;
 
 public class FanInOut {
-    private int i;
 
-    FanInOut(int i) {
-        this.i = i;
-    }
+    public static void main(String[] args) throws InterruptedException {
+        Cxo cxo = new Cxo();
+        cxo.i = 0;
 
-    public static void main(String[] args) {
+        ArrayList<Thread> threadList = new ArrayList<>();
 
-        int i = 0;
-        Exec exec = new Exec();
-        exec.foo();
-    }
-
-
-    static class Exec {
-        List<Integer> list = new ArrayList<>();
-
-        int i = 0;
-
-        synchronized void getAnd() {
-            while (i < 40) {
-                System.out.println(list.get(i));
-                i++;
-            }
+        for (int j = 0; j < 4; j++) {
+            threadList.add(new Thread(cxo::exec));
         }
 
-        void foo() {
-
-            synchronized (this) {
-                for (int j = 1; j <= 50; j++) {
-                    list.add(j);
-                }
+        threadList.forEach(thread -> {
+            try {
+                thread.start();
+//                thread.join();
             }
-
-            while (i < 10) {
-                System.out.println(list.get(i));
-                i++;
+            catch (Exception e) {
+                throw new RuntimeException(e);
             }
+        });
 
-            ArrayList<Thread> threads = new ArrayList<>();
+    }
+}
 
-            for (int j = 0; j < 3; j++) {
-                threads.add(new Thread(this::getAnd));
-            }
-
-            threads.forEach(Thread::start);
-            threads.forEach(thread -> {
-                try {
-                    thread.join();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-            while (i < 50) {
-                System.out.println(list.get(i));
-                i++;
-            }
-
+class Cxo {
+    int i = 0;
+    synchronized void exec() {
+        while (i < 40) {
+            i++;
+            System.out.println(i);
         }
     }
 }
