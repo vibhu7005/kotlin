@@ -1,6 +1,8 @@
 package multithreading;
 
-public class Synchronous {
+import java.io.Serializable;
+
+public class Synchronous implements Serializable {
 
     final String i1 = "s1";
     final String i2 = "s2";
