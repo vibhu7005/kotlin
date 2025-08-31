@@ -11,6 +11,6 @@ public class Keywords {
 
         int c = 5;
         int d = c++;
-           System.out.println(d);
+           System.out.println(5*(2/5));
     }
 }
