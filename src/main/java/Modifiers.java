@@ -13,6 +13,11 @@ public class Modifiers {
         a = 34;
     }
 
+    int sum(int a, int b) {
+        return a+b;
+    }
+
+
 
     public static void main(String[] args) {
         Modifiers modifiers = new Modifiers(23);
