@@ -9,20 +9,24 @@ public class Keywords {
         System.out.println("hello");
     }
        public static void  main(String[] args) {
-        String String = "dfdf";
-        System.out.println("fdf");
-        Integer i = 9;
+//        String String = "dfdf";
+//        System.out.println("fdf");
+//        Integer i = 9;
+//
+//        int c = 5;
+//        int d = c++;
+//        List<Integer> list = Arrays.asList(1,2,3);
+//        String[] strArray = {"df","fdf"};
+//        list.forEach(element -> {
+//
+//        }) ;
+//
+        Integer x = 127;
+        Integer h = 127;
+        System.out.println(x == h);
 
-        int c = 5;
-        int d = c++;
-        List<Integer> list = Arrays.asList(1,2,3);
-        String[] strArray = {"df","fdf"};
-        list.forEach(element -> {
-
-        }) ;
-
-        for (String s : strArray) {
-
-        }
+//        for (String s : strArray) {
+//
+//        }
     }
 }
