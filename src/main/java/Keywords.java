@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Keywords {
 
 
@@ -11,6 +15,14 @@ public class Keywords {
 
         int c = 5;
         int d = c++;
-           System.out.println(5*(2/5));
+        List<Integer> list = Arrays.asList(1,2,3);
+        String[] strArray = {"df","fdf"};
+        list.forEach(element -> {
+
+        }) ;
+
+        for (String s : strArray) {
+
+        }
     }
 }
