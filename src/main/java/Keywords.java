@@ -8,5 +8,9 @@ public class Keywords {
         String String = "dfdf";
         System.out.println("fdf");
         Integer i = 9;
+
+        int c = 5;
+        int d = c++;
+           System.out.println(d);
     }
 }
