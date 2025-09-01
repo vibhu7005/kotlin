@@ -1,4 +1,4 @@
-public class Modifiers {
+public class Modifiers implements sd,SDFF {
 
     Modifiers(int x) {
         this.s = x;
@@ -26,22 +26,33 @@ public class Modifiers {
 
 
     }
+
+    @Override
+    public void sum() {
+        sd.super.sum();
+    }
 }
 
 abstract class NJ  {
     NJ() {}
     static final int a = 5;
+
+    final void sum() {
+
+    }
 }
 
 
 interface sd {
-    void sum();
+     default void sum() {
+
+    }
 }
 
-interface SDF extends sd,SDFF {
 
-}
 
 interface SDFF {
+    default void sum() {
 
+    }
 }
