@@ -1,5 +1,11 @@
-public class Strings {
-
-    //String should not be used to store passwords becuase of immutable nature of string,
-//    It stays in memory until garbage collected
+final public class Strings {
+    private final int x;
+    Strings(int x) {
+        this.x = x;
+    }
+    public int getX() {
+        return x;
+    }
 }
+
+
