@@ -40,6 +40,7 @@ abstract class NJ  {
     final void sum() {
 
     }
+
 }
 
 
