@@ -24,6 +24,11 @@ public class Modifiers implements sd,SDFF {
         System.out.println(modifiers.s);
         System.out.println(Modifiers.a);
 
+        String s = "a" + "b".toUpperCase();
+        String sb = "aB";
+        System.out.println(s);
+
+
 
     }
 
