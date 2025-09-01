@@ -24,5 +24,24 @@ public class Modifiers {
         System.out.println(modifiers.s);
         System.out.println(Modifiers.a);
 
+
     }
+}
+
+abstract class NJ  {
+    NJ() {}
+    static final int a = 5;
+}
+
+
+interface sd {
+    void sum();
+}
+
+interface SDF extends sd,SDFF {
+
+}
+
+interface SDFF {
+
 }
