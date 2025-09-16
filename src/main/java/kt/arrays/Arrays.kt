@@ -8,12 +8,20 @@ fun main() {
         age = 7
     }
 
+    bhu {x->
+        x +2
+    }
+
     println(person)
 
     val s = "shyam"
     s?.apply {
 
     }
+}
+
+fun bhu(xf : (Int) -> Int) {
+    xf(8)
 }
 
 data class Person (
