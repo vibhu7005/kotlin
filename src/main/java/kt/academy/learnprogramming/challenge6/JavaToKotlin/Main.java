@@ -2,6 +2,7 @@ package kt.academy.learnprogramming.challenge6.JavaToKotlin;
 import java.util.ArrayList;
 
 public class Main {
+    static int B[] = new int[5];
 
     static ArrayList<ArrayList<Integer>> res = new ArrayList<>();
     boolean stop = false;
@@ -11,7 +12,7 @@ public class Main {
         int A[] = {7,6,5,4,3};
         obj.mergeSort(A, 0, A.length-1);
         for (int i = 0; i < A.length; i++) {
-            System.out.print(A[i] + " ");
+            System.out.print(B[i] + " ");
         }
     }
 
@@ -26,34 +27,33 @@ public class Main {
     }
 
     void mergeArrays(int A[], int start, int mid, int end) {
-        int B[] = new int[end - start + 1];
         int l1 = start;
         int r1 = mid;
+        int x = start;
         int l2 = mid + 1;
         int r2 = end;
-        int index = 0;
         while (l1 <= r1 && l2 <= r2) {
             if (A[l1] < A[l2]) {
-                B[index++] = A[l1];
+                B[x++] = A[l1];
                 l1++;
             } else {
-                B[index++] = A[l2];
+                B[x++] = A[l2];
                 l2++;
             }
         }
 
         while (l1 <= r1) {
-            B[index++] = A[l1];
+            B[x++] = A[l1];
             l1++;
         }
 
         while (l2 <= r2) {
-            B[index++] = A[l2];
+            B[x++] = A[l2];
             l2++;
         }
         int p = start;
-        for (int i = 0; i < B.length; i++) {
-            A[p++] = B[i];
+        for (int i = start; i <= end; i++) {
+            A[i] = B[i];
         }
     }
 
