@@ -13,8 +13,42 @@ public class Hashing {
 
 
     public static void main(String[] args) {
-        for (int i = 0; i< 10; i++) {
-            list.add(new ArrayList<Pair<Integer,Integer>>());
+        String s = new String("xxyzxxyzwxxyzxxyzx");
+        StringBuilder sb = new StringBuilder(s);
+
+        int l = 0;
+        int r = 0;
+        int z[] = new int[s.length()];
+        z[0] = s.length();
+
+        for (int i = 1; i < sb.length(); i++) {
+            if (i > r) {
+                l = i;
+                r = i;
+                while (r < s.length() && sb.charAt(r) == sb.charAt(r-l)) {
+                    r++;
+                }
+                z[i] = r - l;
+                r--;
+            } else {
+                int d = z[i-l];
+
+                if ((i-l+d) < (r - l + 1)) {
+                    z[i] = d;
+                } else {
+                    l = i;
+                    while (r < s.length() && sb.charAt(r) == sb.charAt(r-l)) {
+                        r++;
+                    }
+                    z[i] = r - l;
+                    r--;
+                }
+            }
+
+        }
+
+        for (int i = 0; i < z.length; i++) {
+            System.out.println(z[i] + " ");
         }
     }
 
@@ -25,8 +59,7 @@ public class Hashing {
     static void put (int key, int value) {
         int hash = hashcode(key);
         Pair<Integer,Integer> p = new Pair<>(key,value);
-        if (list.size() <
-        list.add(hash, p);
+
 
     }
 }
