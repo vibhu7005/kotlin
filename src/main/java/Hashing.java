@@ -7,21 +7,24 @@ import java.util.HashMap;
 
 public class Hashing {
 
-    static ArrayList<ArrayList<Pair<Integer, Integer>>> list = new ArrayList<>();
-
+    static int dp[] = new int[100];
+    static int min = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
-        System.out.println(stairs(3));
+        Arrays.fill(dp, -1);
+        System.out.println(countMin(22));
     }
 
-    static int stairs(int n) {
-        if (n == 0) {
-           return 1;
+    static int countMin(int n) {
+        if (n == 0) return 0;
+
+        if (dp[n] != -1) return dp[n];
+
+        for (int i = 1; i * i <= n; i++) {
+            int x = i * i;
+            min = Math.min(min, 1 + countMin(n - x));
         }
-        if (n == 1) {
-            return stairs(n - 1);
-        } else {
-            return stairs(n - 1) + stairs(n - 2);
-        }
+        dp[n] = min;
+        return min;
     }
 }
