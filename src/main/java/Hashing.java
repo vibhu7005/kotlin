@@ -7,12 +7,17 @@ import java.util.HashMap;
 
 public class Hashing {
 
-    static int dp[] = new int[100];
+    static int dp[] = new int[21];
     static int min = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         Arrays.fill(dp, -1);
-        System.out.println(countMin(22));
+        System.out.println(countMin(18));
+
+        for (int i = 0; i<18; i++) {
+            System.out.println(dp[i]);
+        }
+
     }
 
     static int countMin(int n) {
