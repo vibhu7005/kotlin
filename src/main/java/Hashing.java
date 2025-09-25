@@ -12,22 +12,26 @@ public class Hashing {
 
     public static void main(String[] args) {
         lis[0] = 1;
-        int arr[] = {0,8,4,12,2,10,16,1,9,5,13};
-        for (int i = 0; i < arr.length; i++) {
-            int j;
-            for (j = i-1; j >=0; j--) {
-                if (arr[j] < arr[i]) {
-                    lis[i] = lis[j]+1;
-                    break;
+        int []arr = {1,2,3,4,0};
+        int []maxProfit = new int[arr.length];
+        Arrays.fill(maxProfit, -1);
+        int ans = 0;
+        maxProfit[0] = 0;
+        for (int i = 1; i < arr.length; i++) {
+            maxProfit[i] = 0;
+            maxProfit[i] = Math.max(maxProfit[i], maxProfit[i - 1]);
+
+            for (int j = i-1; j >=0; j--) {
+                if (j != 0) {
+                    maxProfit[i] = Math.max(maxProfit[i], arr[i] - arr[j] + maxProfit[j - 1]);
+                } else {
+                    maxProfit[i] = Math.max(maxProfit[i], arr[i] - arr[j]);
                 }
-            }
-            if (j == -1) {
-                lis[i] = 1;
             }
         }
 
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(lis[i] + " ");
+            System.out.println(maxProfit[i] + " ");
         }
     }
 
