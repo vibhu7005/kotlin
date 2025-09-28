@@ -1,21 +1,45 @@
+import java.util.Arrays;
+
 public class SegTrees {
 
     static int seg[] = new int[16];
+    static int min = Integer.MAX_VALUE;
+    static int dp[] = new int[100];
     public static void main(String[] args) {
-        int arr[] = {8,7,9,11,10};
-        create(arr, 0, 0, arr.length-1);
+//        int arr[] = {8,7,9,11,10};
+//        create(arr, 0, 0, arr.length-1);
+//
+//        update(11, 5);
+        Arrays.fill(dp,-1);
+        System.out.println(minSquares(15));
 
-        update(11, 5);
-
-//        System.out.println(query(0,0, arr.length-1,0,1));
 
 
-
-        for (int i = 0; i < seg.length; i++) {
-            System.out.println(seg[i]);
-        }
+//        for (int i = 0; i < seg.length; i++) {
+//            System.out.println(seg[i]);
+//        }
 
     }
+
+    static int minSquares(int n) {
+        if (dp[n] != -1) {
+            return dp[n];
+        }
+        if (n == 0) {
+            return 0;
+        }
+        for (int i = 1; i * i <= n; i++) {
+            min = Math.min(min,  1  + minSquares(n - (i * i)));
+        }
+        dp[n] = min;
+        return min;
+    }
+
+
+
+
+
+
 
     static void update(int source, int targetValue) {
         int index = 0;
