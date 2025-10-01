@@ -17,7 +17,7 @@ class Logger {
     }
     static Logger getInstance() {
         if (instance == null) {
-            synchronized (instance) {
+            synchronized (Logger.class) {
                 if (instance == null) {
                     instance =  new Logger();
                 }
