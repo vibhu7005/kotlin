@@ -2,15 +2,47 @@ public class RT {
 
 
     public static void main(String[] args) {
-        Logger.getInstance().log();
-        Logger.getInstance().log();
-        Naman.INSTANCE.printValue();
 
-        Config config =
 
 
     }
 }
+
+interface Database {
+    int getConnectionLimit();
+    int getMaxLoad();
+    Query getQuery();
+}
+
+interface Query {
+
+}
+
+class PostGreyQuery implements Query { }
+
+class MongoDbQuery implements Query { }
+
+class PostgreyDb implements Database {
+
+    @Override
+    public int getConnectionLimit() {
+        return 0;
+    }
+
+    @Override
+    public int getMaxLoad() {
+        return 0;
+    }
+
+    @Override
+    public Query getQuery() {
+        return null;
+    }
+}
+
+
+
+
 
 enum Naman {
     INSTANCE(90);
