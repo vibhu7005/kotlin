@@ -1,24 +1,29 @@
 package kt.scalerdesigns
 
-class PaytmbankApi {
-    fun sendMoneyViaUpi() {}
-    fun sendMoneyViaAeps() {}
-}
-
 interface BankApi {
-    fun upiTransfer()
-    fun aepsTransfer()
+    fun upiTransfer();
+    fun aepsTransfer();
 }
 
 class PaytmBankAdapter : BankApi {
-    val paytmbankApi = PaytmbankApi()
-
+    private val paytmBankApi = PaytmBankApi()
     override fun upiTransfer() {
-        paytmbankApi.sendMoneyViaUpi()
+        paytmBankApi.transferToUpi()
     }
 
     override fun aepsTransfer() {
-        paytmbankApi.sendMoneyViaAeps()
+        paytmBankApi.transferAeps()
+    }
+}
+
+class PaytmBankApi {
+
+    fun transferToUpi() {
+
+    }
+
+    fun transferAeps() {
+
     }
 
 }
