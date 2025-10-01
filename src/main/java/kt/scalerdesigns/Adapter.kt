@@ -29,8 +29,7 @@ class PaytmBankApi {
 }
 
 fun main() {
-    val bankApi : BankApi
-    bankApi = PaytmBankAdapter()
+    val bankApi : BankApi = PaytmBankAdapter()
     bankApi.upiTransfer()
     bankApi.aepsTransfer()
 }
