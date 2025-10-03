@@ -1,6 +1,6 @@
 public class IceCreamGenerator {
 
-    interface IceCream {
+    interface IceCream extends Prototype{
         int getPrice();
         String getDescription();
         boolean containsScoob();
@@ -10,9 +10,13 @@ public class IceCreamGenerator {
         IceCream i = new ChocolateCone();
         IceCream h = new ChocoScoob(i);
         try {
-            IceCream doubleChcoclateScoob = new ChocolateCone(new ChocoScoob(new ChocoScoob(new ChocolateCone())));
+            IceCream doubleChcoclateScoob = new ChocoScoob(new ChocoScoob(new ChocolateCone()));
             System.out.println(doubleChcoclateScoob.getDescription());
             System.out.println(doubleChcoclateScoob.getPrice());
+
+            IceCream clone = (IceCream) doubleChcoclateScoob.mClone();
+
+            System.out.println(clone.getDescription());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -23,8 +27,8 @@ public class IceCreamGenerator {
         IceCream iceCream;
         ChocolateCone() {}
 
-        ChocolateCone(IceCream iceCream) throws Exception {
-            if (iceCream.containsScoob()) throw new Exception("Not valid");
+        ChocolateCone(IceCream iceCream)  {
+            if (iceCream.containsScoob())
             this.iceCream = iceCream;
         }
 
@@ -45,6 +49,11 @@ public class IceCreamGenerator {
             if (iceCream == null) return false;
             return iceCream.containsScoob();
         }
+
+        @Override
+        public Prototype mClone() {
+            return new ChocolateCone(iceCream);
+        }
     }
 
     static class VanillaCone implements IceCream  {
@@ -52,8 +61,8 @@ public class IceCreamGenerator {
         IceCream iceCream;
         VanillaCone() {}
 
-        VanillaCone(IceCream iceCream) throws Exception {
-            if (iceCream.containsScoob()) throw new Exception("Not valid");
+        VanillaCone(IceCream iceCream) {
+
             this.iceCream = iceCream;
         }
 
@@ -73,6 +82,11 @@ public class IceCreamGenerator {
         public boolean containsScoob() {
             if (iceCream == null) return false;
             return iceCream.containsScoob();
+        }
+
+        @Override
+        public Prototype mClone() {
+            return new VanillaCone(iceCream);
         }
     }
 
@@ -98,5 +112,14 @@ public class IceCreamGenerator {
        public boolean containsScoob() {
            return true;
        }
+
+       @Override
+       public Prototype mClone() {
+           return new ChocoScoob(iceCream);
+       }
+   }
+
+   interface Prototype {
+        Prototype mClone();
    }
 }
