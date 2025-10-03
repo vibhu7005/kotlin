@@ -13,7 +13,7 @@ class LiveData<E> {
         observers.put(owner, observer)
     }
 
-    fun removeObserver(observer: (E?) -> Unit) {
+    fun removeObserver() {
 //        observers.remove()
     }
 
