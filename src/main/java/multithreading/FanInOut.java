@@ -14,8 +14,6 @@ public class FanInOut {
     }
 
     public static void main(String[] args) {
-
-        int i = 0;
         Exec exec = new Exec();
         exec.foo();
     }
@@ -27,9 +25,11 @@ public class FanInOut {
         int i = 0;
 
         synchronized void getAnd() {
-            System.out.println(list.get(i));
-            i++;
-            notify();
+            if (i < 40) {
+                System.out.println(list.get(i));
+                i++;
+            }
+//            notify();
         }
 
         void foo() {
