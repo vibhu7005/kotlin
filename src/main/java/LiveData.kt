@@ -1,14 +1,8 @@
-// Save this as Main.kt or LiveData.kt
+class LiveData<T> {
+    private var value : T?= null
+    private val list : MutableList<MyObserver<T>> = mutableListOf()
 
-interface MyObserver<T> {  // Using different name to avoid conflicts
-    fun onChanged(value: T)
-}
-
-class LiveData<T> private constructor(){
-    private var a: T? = null
-    private val list = mutableListOf<MyObserver<T>>()
-
-    fun register(owner : LifecycleOwner, observer: MyObserver<T>) {
+    fun register(observer: MyObserver<T>) {
         list.add(observer)
     }
 
@@ -16,42 +10,29 @@ class LiveData<T> private constructor(){
         list.remove(observer)
     }
 
-    fun setValue(value: T) {
-        a = value
-        list.forEach { observer ->
+    fun setValue(value : T) {
+        this.value = value
+        for (observer in list) {
             observer.onChanged(value)
         }
     }
 
 
+}
 
-    fun getValue(): T? = a
-
-    companion object {
-        private var INSTANCE: LiveData<*>? = null
-
-        @Suppress("UNCHECKED_CAST")
-        fun <T> getInstance(): LiveData<T> {
-            return INSTANCE as? LiveData<T> ?: synchronized(this) {
-                INSTANCE as? LiveData<T> ?: LiveData<T>().also {
-                    INSTANCE = it
-                }
-            } as LiveData<T>
-        }
+class DFG : MyObserver<Int> {
+    override fun onChanged(value: Int) {
+        println("value arrived $value")
     }
 }
 
-class Asd : MyObserver<Int> {
-    init {
-        LiveData.getInstance<Int>().register(this)
-    }
-    override fun onChanged(value: Int) {
-        println("value changes $value")
-    }
+interface MyObserver<T> {
+    fun onChanged (value: T)
 }
 
 fun main() {
-    val liveData = LiveData.getInstance<Int>()
-    val asd = Asd()
+    val liveData = LiveData<Int>()
+    liveData.register(DFG())
     liveData.setValue(45)
 }
+
