@@ -6,16 +6,25 @@ class Demo {
 
 }
 
-open class Animal
-class Dog : Animal()
+abstract class Hulk {
+    abstract fun open()
+}
+
+open class Animal {
+    fun eat() = println("eating")
+}
+class Dog : Animal() {
+    fun bark() = println("barking")
+}
+
+enum class Levels {
+    _1,_2,_3,_4
+}
 
 fun main(args: Array<String>) {
     var a = 256
     var d : Byte = a.toByte()
     println(d)
-    val animal : Animal = Dog();
-    val lok  = 1000000000000
-    val chad = 'a'
-    val s : Int = chad.code
-//    println(Char.MAX_HIGH_SURROGATE)
+    val animal : Animal = Dog()
+    animal.eat()
 }
