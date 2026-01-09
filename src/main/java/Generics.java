@@ -17,6 +17,21 @@ class Xyz<T,E> {
         this.first = first;
         this.second = second;
     }
+
+
+    void calc() {
+        Integer a = Integer.valueOf(45);
+        Runnable run = new Runnable() {
+
+            @Override
+            public void run() {
+                 ;//1908
+            }
+        };
+
+        Thread thread = new Thread(run);
+        thread.start();
+    }
 }
 
 

@@ -6,6 +6,13 @@ class Demo {
 
 }
 
+fun calc() {
+    var x = 34;
+    Thread {
+        x++
+    }
+}
+
 abstract class Hulk {
     abstract fun open()
 }
@@ -20,6 +27,8 @@ class Dog : Animal() {
 enum class Levels {
     _1,_2,_3,_4
 }
+
+
 
 fun main(args: Array<String>) {
     var a = 256
