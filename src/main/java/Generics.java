@@ -1,30 +1,17 @@
 public class Generics {
     public static void main(String[] args) {
-        Packet<Integer, String> p = new Packet<>();
-        p.setA(23);
-        p.setB("lol");
-        System.out.println(p.produceA());
-        System.out.println(p.produceB());
+        Xyz obj = new Xyz("abc", 34);
+    }
+}
+
+class Xyz<T,E> {
+    final T first;
+    E second;
+    public Xyz(T first, E second) {
+        this.first = first;
+        this.second = second;
     }
 }
 
 
-class Packet<T, K> {
-    private T a;
-    private K b;
-    T produceA () {
-        return a;
-    }
 
-    void setA(T a) {
-        this.a = a;
-    }
-
-    void setB(K b) {
-        this.b = b;
-    }
-
-    K produceB() {
-        return b;
-    }
-}
