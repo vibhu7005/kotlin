@@ -28,3 +28,7 @@ fun main(args: Array<String>) {
     val animal : Animal = Dog()
     animal.eat()
 }
+
+enum class Stataus {
+    Completed, pending, done
+}
