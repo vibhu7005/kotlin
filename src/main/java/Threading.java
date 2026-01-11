@@ -19,8 +19,7 @@ class FaniNinExecttion {
         }
 
         List<Thread> threadList = new ArrayList<>();
-        for (
-                int k = 1;
+        for (int k = 1;
                 k <= 4; k++) {
             Thread thread = new Thread(this::getAndUpdate);
             threadList.add(thread);
@@ -36,7 +35,7 @@ class FaniNinExecttion {
             }
         }
 
-        while (i <= 50) {
+        while (i <= 500) {
             System.out.println(i);
             i++;
         }
@@ -44,7 +43,7 @@ class FaniNinExecttion {
 
 
     synchronized void getAndUpdate() {
-        while (i <= 40) {
+        while (i <= 400) {
             System.out.println(i);
             i++;
         }
