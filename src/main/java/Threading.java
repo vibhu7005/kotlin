@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ class FaniNinExecttion {
 
         List<Thread> threadList = new ArrayList<>();
         for (int k = 1;
-                k <= 4; k++) {
+             k <= 4; k++) {
             Thread thread = new Thread(this::getAndUpdate);
             threadList.add(thread);
             thread.start();
@@ -34,17 +35,13 @@ class FaniNinExecttion {
                 throw new RuntimeException(e);
             }
         }
-
-        while (i <= 500) {
-            System.out.println(i);
-            i++;
-        }
     }
 
 
     synchronized void getAndUpdate() {
         while (i <= 400) {
             System.out.println(i);
+            Thread.sleep(1);
             i++;
         }
     }
